@@ -9,9 +9,9 @@ elseif (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["login"])) 
     $userid = mysqli_real_escape_string($conn, $_POST["id"]);
     // https://www.php.net/manual/ru/mysqli.real-escape-string.php
     $username = mysqli_real_escape_string($conn, $_POST["name"]);
-    $userage = mysqli_real_escape_string($conn, $_POST["login"]);
+    $login = mysqli_real_escape_string($conn, $_POST["login"]);
       
-    $sql = "UPDATE Users SET name = '$username', login = '$userage' WHERE id = '$userid'";
+    $sql = "UPDATE Users SET name = '$username', login = '$login' WHERE id = '$userid'";
     if($result = mysqli_query($conn, $sql)){
         // https://www.php.net/manual/ru/mysqli.query.php
         header("Location: select.php");
