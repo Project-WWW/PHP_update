@@ -3,6 +3,8 @@ $conn = new mysqli("localhost", "root", "", "mybase");
 
 if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])){
     // https://www.php.net/manual/ru/reserved.variables.server
+    $result = $conn->query("SELECT * FROM users WHERE id='" . $_GET['id'] . "'");
+    $row= mysqli_fetch_array($result);
 }
 elseif (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["login"])) {
     // https://www.php.net/manual/ru/function.isset
@@ -17,8 +19,7 @@ elseif (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["login"])) 
         header("Location: select.php");
      } 
 }
-$result = $conn->query("SELECT * FROM users WHERE id='" . $_GET['id'] . "'");
-$row= mysqli_fetch_array($result);
+
 ?>
 
 <html>
